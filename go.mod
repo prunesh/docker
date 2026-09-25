@@ -1,3 +1,3 @@
-module github.com/gtk-ai/docker
+module github.com/prunesh/docker
 
 go 1.26.1

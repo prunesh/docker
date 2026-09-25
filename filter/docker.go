@@ -1,7 +1,7 @@
-// Package filter implements the gtk-ai/docker filter logic.
+// Package filter implements the prunesh/docker filter logic.
 //
 // Contract:
-//   - id:      gtk-ai/docker
+//   - id:      prunesh/docker
 //   - command: docker
 //
 // Rewrite: injects --tail=100 into `logs` invocations that do not specify a
@@ -22,7 +22,7 @@ import (
 )
 
 const (
-	ID      = "gtk-ai/docker"
+	ID      = "prunesh/docker"
 	Command = "docker"
 
 	defaultLogTail = "100"

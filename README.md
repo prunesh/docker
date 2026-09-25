@@ -1,6 +1,6 @@
-# gtk-ai/docker
+# prunesh/docker
 
-Token-reduction plugin for [gtk-ai](https://github.com/gtk-ai/gtk-ai) that filters `docker` output.
+Token-reduction plugin for [prunesh](https://github.com/prunesh/prunesh) that filters `docker` output.
 
 `docker inspect` can produce 200+ lines of JSON containing `GraphDriver`, `HostConfig`, `NetworkSettings`, mount details, and internal paths that are rarely useful in an AI coding session. `docker logs` without a tail limit can dump thousands of lines. This plugin strips the noise and caps what reaches the context window.
 
@@ -63,22 +63,22 @@ docker.io/library/nginx:latest
 
 ## Install
 
-Requires [gtk-ai core](https://github.com/gtk-ai/gtk-ai) >= 0.12.0.
+Requires [prunesh core](https://github.com/prunesh/prunesh) >= 0.12.0.
 
 ```bash
-gtkai plugin install github.com/gtk-ai/docker@v0.1.0
+prunesh plugin install github.com/prunesh/docker@v0.1.0
 ```
 
 To replace an existing `docker` plugin:
 
 ```bash
-gtkai plugin install github.com/gtk-ai/docker@v0.1.0 --replace
+prunesh plugin install github.com/prunesh/docker@v0.1.0 --replace
 ```
 
 ## Uninstall
 
 ```bash
-gtkai plugin uninstall gtk-ai/docker
+prunesh plugin uninstall prunesh/docker
 ```
 
 ## How it works
