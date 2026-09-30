@@ -63,16 +63,16 @@ docker.io/library/nginx:latest
 
 ## Install
 
-Requires [prunesh core](https://github.com/prunesh/prunesh) >= 0.12.0.
+Requires [prunesh core](https://github.com/prunesh/prunesh) >= 0.16.0.
 
 ```bash
-prunesh plugin install github.com/prunesh/docker@v0.1.0
+prunesh plugin install github.com/prunesh/docker@v0.3.0
 ```
 
 To replace an existing `docker` plugin:
 
 ```bash
-prunesh plugin install github.com/prunesh/docker@v0.1.0 --replace
+prunesh plugin install github.com/prunesh/docker@v0.3.0 --replace
 ```
 
 ## Uninstall

@@ -248,43 +248,25 @@ func TestID(t *testing.T) {
 	}
 }
 
-// --- prunesh.json manifest ---
+// --- prunesh.toml manifest ---
 
 func TestManifest(t *testing.T) {
-	data, err := os.ReadFile("prunesh.json")
+	data, err := os.ReadFile("prunesh.toml")
 	if err != nil {
-		t.Fatalf("read prunesh.json: %v", err)
+		t.Fatalf("read prunesh.toml: %v", err)
 	}
-
-	var manifest struct {
-		ID                 string   `json:"id"`
-		Command            string   `json:"command"`
-		Platforms          []string `json:"platforms"`
-		Contract           string   `json:"contract"`
-		PruneshCoreVersion struct {
-			Version    string `json:"version"`
-			Constraint string `json:"constraint"`
-		} `json:"prunesh-core-version"`
-	}
-	if err := json.Unmarshal(data, &manifest); err != nil {
-		t.Fatalf("parse prunesh.json: %v", err)
-	}
-	if manifest.ID != filter.ID {
-		t.Fatalf("manifest id %q != code id %q", manifest.ID, filter.ID)
-	}
-	if manifest.Command != filter.Command {
-		t.Fatalf("manifest command %q != code command %q", manifest.Command, filter.Command)
-	}
-	if manifest.Contract != "stdin/v1" {
-		t.Fatalf("unexpected contract: %q", manifest.Contract)
-	}
-	if manifest.PruneshCoreVersion.Version == "" {
-		t.Fatal("prunesh-core-version.version must not be empty")
-	}
-	if manifest.PruneshCoreVersion.Constraint != "min" && manifest.PruneshCoreVersion.Constraint != "exact" {
-		t.Fatalf("unexpected prunesh-core-version.constraint: %q", manifest.PruneshCoreVersion.Constraint)
-	}
-	if len(manifest.Platforms) == 0 {
-		t.Fatal("platforms must not be empty")
+	manifest := string(data)
+	for _, want := range []string{
+		`id = "prunesh/docker"`,
+		`command = "docker"`,
+		`platforms = [`,
+		`contract = "stdin/v1"`,
+		`[prunesh-core-version]`,
+		`version = "0.16.0"`,
+		`constraint = "min"`,
+	} {
+		if !strings.Contains(manifest, want) {
+			t.Errorf("manifest must contain %q", want)
+		}
 	}
 }
